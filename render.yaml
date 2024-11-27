@@ -1,0 +1,24 @@
+# Exported from Render on 2024-11-27T08:04:46Z
+databases:
+- name: render-nodejs-sql
+  databaseName: render_nodejs_sql
+  user: render_nodejs_sql_user
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: render-nodejs
+  runtime: go
+  repo: https://github.com/goodfoodtruck/render-nodejs
+  plan: free
+  envVars:
+  - key: DATABASE_URL
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: npm run start
+version: "1"
